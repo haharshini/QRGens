@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script type="text/javascript">
+        function generateqr()
+        {
+            var gapi="https://chart.googleapis.com/chart?chf=bg,s,65432100&cht=qr&chs=";
+            var image=document.getElementById("img");
+            var qrcodetext=document.getElementById("qrtext").value;
+            var itssize=document.getElementById("size").value;
+
+            if (qrcodetext!=="" && itssize=="100")
+            {
+                image.src=gapi+"100x100"+"&chl="+qrcodetext;
+                // https://chart.googleapis.com/chart?cht=qr&chs=100x100&chl=hello
+            }
+
+            else if(qrcodetext!=="" && itssize=="150")
+            {
+
+                image.src=gapi+"150x150"+"&chl="+qrcodetext;
+            }
+
+            else if (qrcodetext!=="" && itssize=="250")
+            {
+                image.src=gapi+"250x250"+"&chl="+qrcodetext;
+            }
+
+            else
+            {
+                alert("please enter your text :)");
+            }
+        
+        }
+    </script>
+    <div class="grid">
+        <h2 align="center">Here's a QR Code Generator!</h2>
+        <h4 align="center">enter any text of your choice and watch it get converted to a QR Code</h4>
+        <center>
+        <img src="" id="img"></center>
+
+        <select id="size">
+            <option value="100">100x100</option>
+            <option value="150" selected>150x150</option>
+            <option value="250">250x250</option>
+        </select>
+        <br><br>
+        <textarea placeholder="ENTER:" id="qrtext"></textarea>
+        <br><br>
+        <input type="submit" value="Generate" onclick="generateqr()">
+
+        
+        
+    </div>
+</body>
+</html>
